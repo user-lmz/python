@@ -10,6 +10,9 @@ def main():
         if send_data == "end":
             break
         udp_socket.sendto(send_data.encode('gbk'), (dest_ip, dest_port))
+        recv_data, ip_msg = udp_socket.recvfrom(1024)
+        print("收到来自%s:%d的数据:%s"%(dest_ip,dest_port,recv_data.decode('utf-8')))
+        print()
     udp_socket.close()
 
 if __name__ == '__main__':
